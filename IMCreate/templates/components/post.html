@@ -1,0 +1,133 @@
+{% load static %}
+<style>
+  body {
+    background-color: #000011;
+  }
+
+  button {
+    all: unset;
+    background-color: transparent;
+    color: white;
+  }
+
+  button:hover {
+    cursor: pointer;
+  }
+
+  .post_link {
+    display: block;
+  text-decoration: none;
+  color: inherit;
+  }
+  .post_container {
+    background-color: #000011;
+    width: 480px;
+    justify-self: center;
+    margin: 30px;
+    color: #ffffff;
+    /* border-radius: 15px; */
+    font-size: 15px;
+  }
+
+  .post_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .user {
+    display: flex;
+    align-items: center;
+  }
+
+  .post_form {
+    margin: auto;
+  }
+  .user_profile {
+    width: 30px;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    border-radius: 50%;
+    padding-right: 10px;
+  }
+  .user_interactions {
+    display: flex;
+    text-decoration: underline;
+  }
+
+  .post_image {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain;
+    display: flex;
+    justify-self: center;
+    border-radius: 15px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ff0000;
+  }
+  .post_interactions {
+    /* margin: 10px; */
+    display: flex;
+    gap: 20px;
+    /* border-color: white; */
+    /* border-width: 5px; */
+    /* border-style: solid; */
+  }
+
+  .post_desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
+<article class="post_container">
+  <div class="post_header">
+    <a href="{% url 'get_user' 1 %}" class="user">
+        <img class="user_profile" src="{{ post.user.profile_pic }}" alt="{{ post.user.username }}'s profile picture">
+        <div>{{ post.user.username }}</div>
+    </a>
+    <div class="user_interactions">
+      <form class="post_form" method="POST" action="{% url 'follow_user' 1 %}">
+        {% csrf_token %}
+        <button type="submit">Follow</button>
+      </form>
+      <form class="post_form" method="POST" action="{% url 'block_user' 1 %}">
+        {% csrf_token %}
+        <button type="submit">Block</button>
+      </form>
+    </div>
+  </div>
+
+  <div>
+    <a href="{% url 'get_post' 'a' %}" class="post_link">
+      <img class="post_image" src="{{ post.media }}" alt="{{ post.title }} media">
+    </a>
+    <div class="post_interactions">
+      <form method="POST" action="{% url 'like_post' 1 %}">
+        {% csrf_token %}
+        <button type="submit">
+          <svg viewBox="0 0 490 490" height="20px" width="auto">
+          <path d="M140 20C73 20 20 74 20 140c0 135 136 170 228 303 88-132 229-173 229-303 0-66-54-120-120-120-48 0-90 28-109 69-19-41-60-69-108-69z" stroke="white" fill="transparent" stroke-width="30"></path>
+        </svg>
+        </button>
+      </form>
+      <form method="POST" action="{% url 'get_post' 'a' %}">
+        {% csrf_token %}
+        <button type="submit">
+          <svg viewBox="0 0 24 24" height="20px" width="auto">
+            <path d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z" stroke="white" fill="transparent" stroke-width="2"></path>
+          </svg>
+        </button>
+      </form>
+    </div>
+    <a href="{% url 'get_post' 'a' %}" class="post_link">
+      <div><b>{{ post.title }}</b></div>
+      <div class= "post_desc">{{ post.description }}</div>
+    </a>
+  </div>
+</article>

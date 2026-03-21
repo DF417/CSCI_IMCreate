@@ -1,0 +1,49 @@
+/* Base styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    min-height: 100vh;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 200px;
+    background: #0f3b1e; /* Dark forest green */
+    padding: 20px;
+    box-sizing: border-box;
+    color: #d8eed1; /* Soft pale green text */
+}
+
+.sidebar a {
+    display: block;
+    margin-bottom: 12px;
+    color: #ccefc2; /* Light green */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.sidebar a:hover {
+    color: #ffffff;
+}
+
+/* Content */
+.content {
+    flex: 1;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+/* Footer */
+footer {
+    margin-top: 40px;
+    padding: 20px 0;
+    text-align: center;
+    color: #9aa39c;
+    border-top: 1px solid #2f4f3a; /* Subtle green-gray border */
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}

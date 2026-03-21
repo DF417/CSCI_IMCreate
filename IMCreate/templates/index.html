@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+  <h1>Home Page</h1>
+  {% for post in posts %}
+    {% include "components/post.html" %}
+  {% endfor %}
+{% endblock %}
