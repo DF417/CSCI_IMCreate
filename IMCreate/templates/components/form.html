@@ -1,7 +1,5 @@
 <form method="POST" enctype="multipart/form-data">
   {% csrf_token %}
-  {% for form in forms %}
   {{ form.as_p }}
-  {% endfor %}
-  <button type="submit">Submit</button>
+  <button type="submit">{{ submit_key|default:'Submit' }}</button>
 </form>

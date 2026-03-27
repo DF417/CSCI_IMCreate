@@ -104,7 +104,7 @@
   </div>
 
   <div>
-    <a href="{% url 'front_page' %}" class="post_link">
+    <a href="{% url 'view_post' post_id=post.id %}" class="post_link">
       {% for image in post.images.all %}
       <img class="post_image" src="{{ image.image.url }}" alt="{{ post.title }} media">
       {% endfor %}
